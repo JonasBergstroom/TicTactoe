@@ -45,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     var player1 = ArrayList<Int>()
     var player2 = ArrayList<Int>()
 
+
     var activePlayer = 1
 
 
@@ -63,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             activePlayer = 2
 
             // player 1 starts with the activePlayers value as "1", until she/he chooses to click on a button.
-            // Then the activePlayer value becomes "2".
+            // Then the "activePlayer" value becomes "2".
             // When player 1 chooses a button to click, the appearance of the button change to an "X" with the background color blue.
 
         }else{
@@ -72,8 +73,8 @@ class MainActivity : AppCompatActivity() {
             buttSelected.setBackgroundColor(Color.parseColor("#FF9300"))
             activePlayer = 1
 
-            // It is now player 2 turn to play because the value of the activePlayer became "2".
-            // After player 2 chooses to click on a button the activePlayer value becomes "1" again.
+            // It is now player 2 turn to play because the value of the "activePlayer" became "2".
+            // After player 2 chooses to click on a button the "activePlayer" value becomes "1" again.
             // When player 2 chooses a button to click, the appearance of the button change to an "O" with the background color orange.
 
         }
@@ -81,9 +82,97 @@ class MainActivity : AppCompatActivity() {
 
         // When a player chooses to click on a button, that button can't be clicked again.
 
-      }
+
+        checkWinner()
+
+        // Making the "checkWinner" function connect to the "playGame" function.
 
     }
+
+    private fun checkWinner() {
+        var winner = -1
+
+        // No player is winner at the start, because the value of the "winner" = -1 at start.
+
+        if(player1.contains(1) && player1.contains(2) && player1.contains(3)) {
+            winner = 1
+        }
+        if(player2.contains(1) && player2.contains(2) && player2.contains(3)) {
+            winner = 2
+        }
+
+        if(player1.contains(1) && player1.contains(5) && player1.contains(9)) {
+            winner = 1
+        }
+        if(player2.contains(1) && player2.contains(5) && player2.contains(9)) {
+            winner = 2
+        }
+
+        if(player1.contains(3) && player1.contains(5) && player1.contains(7)) {
+            winner = 1
+        }
+        if(player2.contains(3) && player2.contains(5) && player2.contains(7)) {
+            winner = 2
+        }
+
+        if(player1.contains(1) && player1.contains(4) && player1.contains(7)) {
+            winner = 1
+        }
+        if(player2.contains(1) && player2.contains(4) && player2.contains(7)) {
+            winner = 2
+        }
+
+
+
+        if(player1.contains(4) && player1.contains(5) && player1.contains(6)) {
+            winner = 1
+        }
+        if(player2.contains(4) && player2.contains(5) && player2.contains(6)) {
+            winner = 2
+        }
+
+        if(player1.contains(7) && player1.contains(8) && player1.contains(9)) {
+            winner = 1
+        }
+        if(player2.contains(7) && player2.contains(8) && player2.contains(9)) {
+            winner = 2
+        }
+
+
+        if(player1.contains(2) && player1.contains(5) && player1.contains(8)) {
+            winner = 1
+        }
+        if(player2.contains(2) && player2.contains(5) && player2.contains(8)) {
+            winner = 2
+        }
+
+        if(player1.contains(3) && player1.contains(6) && player1.contains(9)) {
+            winner = 1
+        }
+        if(player2.contains(3) && player2.contains(6) && player2.contains(9)) {
+            winner = 2
+        }
+
+        // Making the rules in the game, in the function "checkWinner".
+        // Sets all possible combinations for each player, in order to win.
+
+
+        if(winner != -1) {
+            if (winner == 1) {
+                Toast.makeText(this, "Player 1 won the game!", Toast.LENGTH_LONG).show()
+            }
+            // When the value of the "winner" ends with == 1, player 1 wins. Then a "Toast" text appears with the message "Player 1 won the game!"
+
+            else if (winner == 2) {
+                Toast.makeText(this, "Player 2 won the game!", Toast.LENGTH_LONG).show()
+            }
+            // When the value of the "winner" ends with 2, player 2 wins. Then a "Toast" text appears with the message "Player 2 won the game!"
+
+        }
+
+    }
+}
+
 
 
 
