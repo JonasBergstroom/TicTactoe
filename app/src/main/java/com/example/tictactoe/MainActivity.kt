@@ -44,20 +44,33 @@ class MainActivity : AppCompatActivity() {
 
     var player1 = ArrayList<Int>()
     var player2 = ArrayList<Int>()
-
+    var drawCount = ArrayList<Int>()
 
     var activePlayer = 1
+    var drawPlayer = 1
 
 
-    private fun playGame(buttID: Int, buttSelected: Button)
+
+    fun playGame(buttID: Int, buttSelected: Button)
 
     // Creates player 1 and player 2 in a ArrayList, and a function called "playGame".
     // Also creates a "activePlayer" variable.
     // The value of the activePlayer always start with "1", when the game starts.
 
+    // To make a "draw" situation work, I created a invisible "drawCount" and a "drawPlayer".
+    // The "drawPlayer" works as a "ghost" in the background to count all the clicks.
+
     {
 
-        if (activePlayer == 1) {
+
+        if(drawPlayer == 1) {
+            drawCount.add(buttID)
+
+            // "drawPlayer" always has the value "1" to make it run the whole game.
+            // It is also separated from to other players, but runs invisible in the background during every click a player make.
+        }
+
+        if(activePlayer == 1) {
             buttSelected.text = "X"
             buttSelected.setBackgroundColor(Color.parseColor("#009193"))
             player1.add(buttID)
@@ -67,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             // Then the "activePlayer" value becomes "2".
             // When player 1 chooses a button to click, the appearance of the button change to an "X" with the background color blue.
 
-        }else{
+        }else if(activePlayer == 2){
             buttSelected.text = "O"
             player2.add(buttID)
             buttSelected.setBackgroundColor(Color.parseColor("#FF9300"))
@@ -76,20 +89,19 @@ class MainActivity : AppCompatActivity() {
             // It is now player 2 turn to play because the value of the "activePlayer" became "2".
             // After player 2 chooses to click on a button the "activePlayer" value becomes "1" again.
             // When player 2 chooses a button to click, the appearance of the button change to an "O" with the background color orange.
-
         }
+
         buttSelected.isEnabled = false
 
         // When a player chooses to click on a button, that button can't be clicked again.
 
-
-        checkWinner()
+        checkResult()
 
         // Making the "checkWinner" function connect to the "playGame" function.
 
     }
 
-    private fun checkWinner() {
+    fun checkResult() {
         var winner = -1
 
         // No player is winner at the start, because the value of the "winner" = -1 at start.
@@ -153,8 +165,16 @@ class MainActivity : AppCompatActivity() {
             winner = 2
         }
 
+        if(drawCount.contains(1) && drawCount.contains(2) && drawCount.contains(3) &&
+            drawCount.contains(4) && drawCount.contains(5) && drawCount.contains(6) &&
+            drawCount.contains(7) && drawCount.contains(8) && drawCount.contains(9)) {
+            winner = 3
+        }
+
         // Making the rules in the game, in the function "checkWinner".
         // Sets all possible combinations for each player, in order to win.
+
+        // Also sets the combination for a draw situation with the name "drawCount".
 
 
         if(winner != -1) {
@@ -168,11 +188,14 @@ class MainActivity : AppCompatActivity() {
             }
             // When the value of the "winner" ends with 2, player 2 wins. Then a "Toast" text appears with the message "Player 2 won the game!"
 
+            else{
+                Toast.makeText(this, "Draw!", Toast.LENGTH_LONG).show()
+            }
+
+            // When the value of the "winner" ends with 3, no one wins, it is a draw!. Then a "Toast" text appears with the message "Draw!"
+
         }
 
     }
 }
-
-
-
 
