@@ -1,5 +1,6 @@
 package com.example.tictactoe
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -177,16 +178,24 @@ class MainActivity : AppCompatActivity() {
         // Also sets the combination for a draw situation with the name "drawCount".
 
 
+        val player1_Won = Intent(this, Player1_Wins :: class.java)
+        val player2_Won = Intent(this, player2_wins :: class.java)
+
+        // Making 2 different values for two different activities, "player1_Won" and "player2_Won" that will show depending on which player wins.
+
+
         if(winner != -1) {
             if (winner == 1) {
-                Toast.makeText(this, "Player 1 won the game!", Toast.LENGTH_LONG).show()
+                startActivity(player1_Won)
+             //   Toast.makeText(this, "Player 1 won the game!", Toast.LENGTH_LONG).show()
             }
-            // When the value of the "winner" ends with == 1, player 1 wins. Then a "Toast" text appears with the message "Player 1 won the game!"
+            // When the value of the "winner" ends with == 1, player 1 wins. Then a separate activity starts that shows "Player 1 won!"
 
             else if (winner == 2) {
-                Toast.makeText(this, "Player 2 won the game!", Toast.LENGTH_LONG).show()
+                startActivity(player2_Won)
+               // Toast.makeText(this, "Player 2 won the game!", Toast.LENGTH_LONG).show()
             }
-            // When the value of the "winner" ends with 2, player 2 wins. Then a "Toast" text appears with the message "Player 2 won the game!"
+            // When the value of the "winner" ends with 2, player 2 wins. Then a separate activity starts that shows "Player 2 won!"
 
             else{
                 Toast.makeText(this, "Draw!", Toast.LENGTH_LONG).show()
