@@ -109,7 +109,16 @@ class MainActivity : AppCompatActivity() {
 
         if(player1.contains(1) && player1.contains(2) && player1.contains(3)) {
             winner = 1
+        } else if(drawCount.contains(1) && drawCount.contains(2) && drawCount.contains(3) &&
+            drawCount.contains(4) && drawCount.contains(5) && drawCount.contains(6) &&
+            drawCount.contains(7) && drawCount.contains(8) && drawCount.contains(9)) {
+            winner = 3
+
+            // Sets the combination for a draw situation with the name "drawCount".
+            // Had to move it to the top from the bottom in order to get it work correctly, without any bug.
         }
+
+
         if(player2.contains(1) && player2.contains(2) && player2.contains(3)) {
             winner = 2
         }
@@ -166,22 +175,19 @@ class MainActivity : AppCompatActivity() {
             winner = 2
         }
 
-        if(drawCount.contains(1) && drawCount.contains(2) && drawCount.contains(3) &&
-            drawCount.contains(4) && drawCount.contains(5) && drawCount.contains(6) &&
-            drawCount.contains(7) && drawCount.contains(8) && drawCount.contains(9)) {
-            winner = 3
-        }
-
         // Making the rules in the game, in the function "checkWinner".
         // Sets all possible combinations for each player, in order to win.
 
-        // Also sets the combination for a draw situation with the name "drawCount".
 
 
         val player1_Won = Intent(this, Player1_Wins :: class.java)
         val player2_Won = Intent(this, player2_wins :: class.java)
 
+        val Draw = Intent(this, Draw :: class.java)
+
+
         // Making 2 different values for two different activities, "player1_Won" and "player2_Won" that will show depending on which player wins.
+        // Making 1 more value for the situation draw.
 
 
         if(winner != -1) {
@@ -198,10 +204,11 @@ class MainActivity : AppCompatActivity() {
             // When the value of the "winner" ends with 2, player 2 wins. Then a separate activity starts that shows "Player 2 won!"
 
             else{
-                Toast.makeText(this, "Draw!", Toast.LENGTH_LONG).show()
+                startActivity(Draw)
+              //  Toast.makeText(this, "Draw!", Toast.LENGTH_LONG).show()
             }
 
-            // When the value of the "winner" ends with 3, no one wins, it is a draw!. Then a "Toast" text appears with the message "Draw!"
+            // When the value of the "winner" ends with 3, no one wins, it is a draw!. Then a separate activity starts that shows "Draw!"
 
         }
 
