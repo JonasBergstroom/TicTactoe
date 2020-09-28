@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Draw"></activity>
+        <activity android:name=".Player_Wins"></activity>
+        <activity android:name=".botPlayer_wins" />
+        <activity android:name=".BotPlay" />
+        <activity android:name=".Draw" />
         <activity android:name=".player2_wins" />
         <activity android:name=".Player1_Wins" />
         <activity android:name=".MainActivity" />
