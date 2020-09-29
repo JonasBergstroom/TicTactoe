@@ -110,7 +110,7 @@ class BotPlay : AppCompatActivity() {
 
     }
 
-     fun botPlay() {
+    fun botPlay() {
         val emptyButtID = ArrayList<Int>()
         for(buttID in 1 ..9) {
             if(!(player.contains(buttID) || botPlayer.contains(buttID))) {
@@ -128,9 +128,9 @@ class BotPlay : AppCompatActivity() {
         val randIndex = r.nextInt(emptyButtID.size+0)+0
         val buttID = emptyButtID[randIndex]
 
-         // Makes "botPlayer" randomly select between available "emptyButtID" from 1 - 9.
+        // Makes "botPlayer" randomly select between available "emptyButtID" from 1 - 9.
 
-         val buttSelected : Button
+        val buttSelected : Button
 
         when(buttID){
 
@@ -151,9 +151,9 @@ class BotPlay : AppCompatActivity() {
             // Making "else" = bu1 to not get any errors.
         }
 
-         playGame(buttID, buttSelected)
+        playGame(buttID, buttSelected)
 
-         // Continues the game after "botPlayer" made a choice.
+        // Continues the game after "botPlayer" made a choice.
     }
 
 
@@ -260,7 +260,7 @@ class BotPlay : AppCompatActivity() {
 
             else{
                 startActivity(Draw)
-              //  Toast.makeText(this, "Draw!", Toast.LENGTH_LONG).show()
+                //  Toast.makeText(this, "Draw!", Toast.LENGTH_LONG).show()
             }
 
             // When the value of the "winner" ends with 3, no one wins, it is a draw!. Then a separate activity starts that shows "Draw!"
@@ -268,13 +268,3 @@ class BotPlay : AppCompatActivity() {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
