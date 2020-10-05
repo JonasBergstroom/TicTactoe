@@ -12,13 +12,24 @@ class welcome : AppCompatActivity() {
 
         val button : Button = findViewById(R.id.button)
         button.setOnClickListener {
-            val intent = Intent(this, BotPlay :: class.java)
+            val intent = Intent(this, MainActivity :: class.java)
 
             startActivity(intent)
         }
 
         // When you click on the button "Play!" you will start the "MainActivity" and open the "playGame" tab.
+
+        val buttonb : Button = findViewById(R.id.buttonbot)
+        buttonb.setOnClickListener {
+            val intentb = Intent(this, BotPlay :: class.java)
+
+            startActivity(intentb)
+        }
+
+
+
     }
+
 
 
 }

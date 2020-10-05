@@ -10,13 +10,27 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Play!"
+        android:layout_width="71dp"
+        android:layout_height="63dp"
+        android:background="@android:drawable/btn_star"
+        android:text="Play"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
+        app:layout_constraintHorizontal_bias="0.541"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.535" />
+        app:layout_constraintVertical_bias="0.475" />
+
+    <Button
+        android:id="@+id/buttonbot"
+        android:layout_width="51dp"
+        android:layout_height="46dp"
+        android:background="@drawable/pnghut_predator_alien_extraterrestrial_life_avatar_ufo_j8ghwe9e3k"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.141"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.055" />
 </androidx.constraintlayout.widget.ConstraintLayout>
