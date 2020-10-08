@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bpbgfinish"
+    android:background="@drawable/botpwins"
     tools:context=".botPlayer_wins">
 
     <TextView
@@ -25,8 +25,9 @@
 
     <Button
         android:id="@+id/bu1again"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="59dp"
+        android:background="@android:drawable/progress_horizontal"
         android:text="Play again?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,8 +36,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="199dp"
-        android:layout_height="175dp"
+        android:layout_width="182dp"
+        android:layout_height="161dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

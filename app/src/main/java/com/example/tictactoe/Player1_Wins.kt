@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.appcompat.app.AlertDialog
+import kotlinx.android.synthetic.main.activity_player1__wins.*
 
 class Player1_Wins : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -25,8 +25,9 @@
 
     <Button
         android:id="@+id/bu3again"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="59dp"
+        android:background="@android:drawable/progress_horizontal"
         android:text="Play again?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

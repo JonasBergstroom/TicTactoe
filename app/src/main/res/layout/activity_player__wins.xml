@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bpbgfinish"
+    android:background="@drawable/bgdraw"
     tools:context=".Player_Wins">
 
     <TextView
@@ -25,8 +25,9 @@
 
     <Button
         android:id="@+id/buagain"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="59dp"
+        android:background="@android:drawable/progress_horizontal"
         android:text="Play again?"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
