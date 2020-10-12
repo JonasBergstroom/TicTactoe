@@ -76,7 +76,7 @@ class BotPlay : AppCompatActivity() {
 
         if(activePlayer == 1) {
             buttSelected.text = "X"
-            buttSelected.setBackgroundColor(Color.parseColor("GREEN"))
+            buttSelected.setBackgroundColor(Color.parseColor("RED"))
             player.add(buttID)
             activePlayer = 2
             botPlay()
@@ -90,7 +90,7 @@ class BotPlay : AppCompatActivity() {
 
         }else if(activePlayer == 2){
             buttSelected.text = "O"
-            buttSelected.setBackgroundColor(Color.parseColor("RED"))
+            buttSelected.setBackgroundColor(Color.parseColor("GREEN"))
             botPlayer.add(buttID)
             activePlayer = 1
 
