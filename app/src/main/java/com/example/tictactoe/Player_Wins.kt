@@ -14,11 +14,53 @@ class Player_Wins : AppCompatActivity() {
         setContentView(R.layout.activity_player__wins)
 
         val buttagain : Button = findViewById(R.id.buagain)
-        buttagain.setOnClickListener {
-            val intent = Intent(this, welcome :: class.java)
 
-            startActivity(intent)
+        buttagain.setOnClickListener {
+
+            // Made a "buttagain" that will be able to click on.
+
+            val builder = AlertDialog.Builder(this)
+
+            // Made a "builder" variable to add the context in the "AlertDialog".
+
+            builder.setTitle("Play again?")
+
+            builder.setIcon(R.drawable.smilepw)
+
+            builder.setMessage("Menu or Restart?")
+
+            // Added the Title an icon and a message in the dialog.
+
+            builder.setPositiveButton("Menu") {
+                    dialog, which ->
+
+                val intent = Intent(this, welcome :: class.java)
+
+                startActivity(intent)
+            }
+
+            // When you click on "Menu" you will get back to the "welcome" activity, that is the same as "menu".
+
+            builder.setNegativeButton("Restart") {
+                    dialog, which ->
+
+                val intent = Intent(this, BotPlay :: class.java)
+
+                startActivity(intent)
+
+            }
+
+            // When you click on "Restart" the "BotPlay" activity will start again restored.
+
+
+            val dialog : AlertDialog = builder.create()
+            dialog.show()
+
+            // Makes all "builder" work together to make everything work properly.
+
+
         }
+
 
 
         quitbutt4.setOnClickListener {

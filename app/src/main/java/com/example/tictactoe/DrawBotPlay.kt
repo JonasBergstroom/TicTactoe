@@ -5,19 +5,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
-import kotlinx.android.synthetic.main.activity_bot_player_wins.*
-import kotlinx.android.synthetic.main.activity_player1__wins.*
+import kotlinx.android.synthetic.main.activity_draw_bot_play.*
 
-class Player1_Wins : AppCompatActivity() {
+class DrawBotPlay : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_player1__wins)
+        setContentView(R.layout.activity_draw_bot_play)
 
-        val bu2ttagain : Button = findViewById(R.id.bu2again)
+        val bu5ttagain : Button = findViewById(R.id.bu5again)
 
-        bu2ttagain.setOnClickListener {
+        bu5ttagain.setOnClickListener {
 
-            // Made a "bu2ttagain" that will be able to click on.
+            // Made a "bu5ttagain" that will be able to click on.
 
             val builder = AlertDialog.Builder(this)
 
@@ -25,7 +24,7 @@ class Player1_Wins : AppCompatActivity() {
 
             builder.setTitle("Play again?")
 
-            builder.setIcon(R.drawable.smilep1)
+            builder.setIcon(R.drawable.smilebpww)
 
             builder.setMessage("Menu or Restart?")
 
@@ -34,23 +33,24 @@ class Player1_Wins : AppCompatActivity() {
             builder.setPositiveButton("Menu") {
                     dialog, which ->
 
-                    val intent = Intent(this, welcome :: class.java)
+                val intent = Intent(this, welcome :: class.java)
 
-                    startActivity(intent)
+                startActivity(intent)
             }
 
             // When you click on "Menu" you will get back to the "welcome" activity, that is the same as "menu".
 
+
             builder.setNegativeButton("Restart") {
                     dialog, which ->
 
-                    val intent = Intent(this, MainActivity :: class.java)
+                val intent = Intent(this, BotPlay :: class.java)
 
-                    startActivity(intent)
+                startActivity(intent)
 
             }
 
-            // When you click on "Restart" the "MainActivity" will start again restored.
+            // When you click on "Restart" the "BotPlay" activity will start again restored.
 
 
             val dialog : AlertDialog = builder.create()
@@ -62,9 +62,10 @@ class Player1_Wins : AppCompatActivity() {
         }
 
 
-        quitbutt2.setOnClickListener {
 
-            // Made a "quitbutt2" that will be able to click on.
+        quitbutt.setOnClickListener {
+
+            // Made a "quitbutt" that will be able to click on.
 
             val builder = AlertDialog.Builder(this)
 

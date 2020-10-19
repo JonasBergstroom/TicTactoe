@@ -260,7 +260,7 @@ class BotPlay : AppCompatActivity() {
         val player_Won = Intent(this, Player_Wins :: class.java)
         val botPlayer_Won = Intent(this, botPlayer_wins :: class.java)
 
-        val Draw = Intent(this, Draw :: class.java)
+        val Drawb = Intent(this, DrawBotPlay :: class.java)
 
 
         // Making 2 different values for two different activities, "player_Won" and "botPlayer_Won" that will show depending on which player wins.
@@ -280,7 +280,7 @@ class BotPlay : AppCompatActivity() {
             // When the value of the "winner" ends with 2, botplayer wins. Then a separate activity starts that shows "BotPlayer won!"
 
             else{
-                startActivity(Draw)
+                startActivity(Drawb)
                 //  Toast.makeText(this, "Draw!", Toast.LENGTH_LONG).show()
             }
 

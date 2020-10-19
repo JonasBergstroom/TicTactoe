@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Exit"></activity>
+        <activity android:name=".DrawBotPlay"></activity>
+        <activity android:name=".Exit" />
         <activity android:name=".botPlayer_wins" />
         <activity android:name=".Player_Wins" />
         <activity android:name=".BotPlay" />

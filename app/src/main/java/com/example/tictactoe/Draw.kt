@@ -13,11 +13,55 @@ class Draw : AppCompatActivity() {
         setContentView(R.layout.activity_draw)
 
         val bu4ttagain : Button = findViewById(R.id.bu4again)
-        bu4ttagain.setOnClickListener {
-            val intent = Intent(this, welcome :: class.java)
 
-            startActivity(intent)
+        bu4ttagain.setOnClickListener {
+
+            // Made a "bu4ttagain" that will be able to click on.
+
+            val builder = AlertDialog.Builder(this)
+
+            // Made a "builder" variable to add the context in the "AlertDialog".
+
+            builder.setTitle("Play again?")
+
+            builder.setIcon(R.drawable.smiledraw)
+
+            builder.setMessage("Menu or Restart?")
+
+            // Added the Title an icon and a message in the dialog.
+
+            builder.setPositiveButton("Menu") {
+                    dialog, which ->
+
+                val intent = Intent(this, welcome :: class.java)
+
+                startActivity(intent)
+            }
+
+            // When you click on "Menu" you will get back to the "welcome" activity, that is the same as "menu".
+
+
+            builder.setNegativeButton("Restart") {
+                    dialog, which ->
+
+                val intent = Intent(this, MainActivity :: class.java)
+
+                startActivity(intent)
+
+            }
+
+            // When you click on "Restart" the "MainActivity" will start again restored.
+
+
+            val dialog : AlertDialog = builder.create()
+            dialog.show()
+
+            // Makes all "builder" work together to make everything work properly.
+
+
         }
+
+
 
         quitbutt.setOnClickListener {
 
