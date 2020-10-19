@@ -6,13 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 import kotlin.collections.ArrayList
 import com.example.tictactoe.Draw as Draw
 
 class BotPlay : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bot_play)
@@ -49,9 +49,15 @@ class BotPlay : AppCompatActivity() {
     var player = ArrayList<Int>()
     var botPlayer = ArrayList<Int>()
     var drawCount = ArrayList<Int>()
+    var hardplay = ArrayList<Int>()
 
-    var activePlayer = 1
+    // Made a separate player to make the "BotPlay" work with the rules.
+
+
+
+    var activePlayer = 3
     var drawPlayer = 1
+
 
 
 
@@ -65,6 +71,17 @@ class BotPlay : AppCompatActivity() {
     // The "drawPlayer" works as a "ghost" in the background to count all the clicks.
 
     {
+
+        if(activePlayer == 3) {
+            hardplay.add(buttID)
+            activePlayer = 2
+            botPlay()
+
+            // The game begins with "activePlayer" = 3. When a button is selected by the "player", "hardplay" then adds a "ButtID" so that the button cannot be clicked again.
+            // "player" starts with a single "buttID" when you click on it, meanwhile "botPlayer" adds two random "buttID" to make the game a little more difficult.
+            // "botPlayer" only adds two "buttID" during the first move that "botPlayer" makes in a game. Then the game continues normally.
+
+        }
 
 
         if(drawPlayer == 1) {
@@ -88,6 +105,7 @@ class BotPlay : AppCompatActivity() {
             // Then the "activePlayer" value becomes "2".
             // When player chooses a button to click, the appearance of the button change to an "X" with the background color Green.
 
+
         }else if(activePlayer == 2){
             buttSelected.text = "O"
             buttSelected.setBackgroundColor(Color.parseColor("GREEN"))
@@ -98,6 +116,7 @@ class BotPlay : AppCompatActivity() {
             // It is now botPlayer turn to play because the value of the "activePlayer" became "2".
             // After botPlayer chooses to click on a button the "activePlayer" value becomes "1" again.
             // When botPlayer chooses a button to click, the appearance of the button change to an "O" with the background color Red.
+
         }
 
         buttSelected.isEnabled = false
@@ -113,11 +132,12 @@ class BotPlay : AppCompatActivity() {
     fun botPlay() {
         val emptyButtID = ArrayList<Int>()
         for(buttID in 1 ..9) {
-            if(!(player.contains(buttID) || botPlayer.contains(buttID))) {
+            if(!(player.contains(buttID) || botPlayer.contains(buttID) || hardplay.contains(buttID))) {
                 emptyButtID.add(buttID)
             }
             // Made a "botPlay" function. The "bot player" always check if any of the 9 "buttID" is selected, so it can't be clicked on.
             // When the "botPlayer" finds a empty "buttID" it adds an "emptyButtID" to the game, that contains a "buttID".
+            // Also checks if "hardplay" contains any "buttID".
 
         }
 
@@ -154,6 +174,7 @@ class BotPlay : AppCompatActivity() {
         playGame(buttID, buttSelected)
 
         // Continues the game after "botPlayer" made a choice.
+
     }
 
 
