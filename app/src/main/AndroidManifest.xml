@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".DrawBotPlay"></activity>
-        <activity android:name=".Exit" />
         <activity android:name=".botPlayer_wins" />
         <activity android:name=".Player_Wins" />
         <activity android:name=".BotPlay" />
