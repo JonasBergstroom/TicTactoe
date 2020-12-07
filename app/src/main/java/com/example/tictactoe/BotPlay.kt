@@ -26,9 +26,12 @@ class BotPlay : AppCompatActivity(),CoroutineScope {
 
     private lateinit var db : AppDatabase
 
+    var count = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bot_play)
+
 
         job = Job()
 
@@ -291,16 +294,24 @@ class BotPlay : AppCompatActivity(),CoroutineScope {
             if (winner == 1) {
                 startActivity(player_Won)
                 //   Toast.makeText(this, "Player 1 won the game!", Toast.LENGTH_LONG).show()
+                if(count == 0){
+                    count ++
                 val item = winners(0,"Player")
                 saveItem(item)
+                }
+
             }
             // When the value of the "winner" ends with == 1, player wins. Then a separate activity starts that shows "Player won!"
 
             else if (winner == 2) {
                 startActivity(botPlayer_Won)
                 // Toast.makeText(this, "Player 2 won the game!", Toast.LENGTH_LONG).show()
+                if(count == 0){
+                    count ++
                 val item = winners(0,"BotPlayer")
                 saveItem(item)
+                }
+
             }
             // When the value of the "winner" ends with 2, botplayer wins. Then a separate activity starts that shows "BotPlayer won!"
 

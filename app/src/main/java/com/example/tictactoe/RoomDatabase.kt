@@ -1,12 +1,14 @@
 package com.example.tictactoe
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import kotlinx.android.synthetic.main.temp.*
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
+
 
 class RoomDatabase : AppCompatActivity() , CoroutineScope {
 
@@ -28,17 +30,20 @@ class RoomDatabase : AppCompatActivity() , CoroutineScope {
 
         val list = loadAllItems()
         launch {
+            var previousText = ""
             val itemList = list.await()
             for (item in itemList) {
                 Log.d("!!!", "${item.name}")
-                Hello.text = item.name.toString()
-
+                previousText += item.name.toString() + "\n"
 
             }
+            previousList.text = previousText
+            previousList.setMovementMethod(ScrollingMovementMethod())
+
         }
     }
 
-    fun saveItem(item : winners) {
+    fun saveItem(item: winners) {
         launch(Dispatchers.IO) {
             db.WinnerDao().insert(item)
         }
