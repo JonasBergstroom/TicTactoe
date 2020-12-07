@@ -16,6 +16,7 @@
         <activity android:name=".Draw" />
         <activity android:name=".player2_wins" />
         <activity android:name=".Player1_Wins" />
+        <activity android:name=".RoomDatabase" />
         <activity android:name=".MainActivity" />
         <activity android:name=".welcome">
             <intent-filter>

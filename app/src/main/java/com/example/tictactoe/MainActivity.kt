@@ -7,11 +7,31 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.room.Room
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CoroutineScope {
+
+    private lateinit var job : Job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
+
+
+    private lateinit var db : AppDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        job = Job()
+
+        db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "Winners")
+            .fallbackToDestructiveMigration()
+            .build()
+
     }
 
 
@@ -194,24 +214,36 @@ class MainActivity : AppCompatActivity() {
             if (winner == 1) {
                 startActivity(player1_Won)
              //   Toast.makeText(this, "Player 1 won the game!", Toast.LENGTH_LONG).show()
+                val item = winners(0, "Player 1")
+                saveItem(item)
+
             }
             // When the value of the "winner" ends with == 1, player 1 wins. Then a separate activity starts that shows "Player 1 won!"
 
             else if (winner == 2) {
                 startActivity(player2_Won)
-               // Toast.makeText(this, "Player 2 won the game!", Toast.LENGTH_LONG).show()
+                // Toast.makeText(this, "Player 2 won the game!", Toast.LENGTH_LONG).show()
+                val item = winners(0,"Player 2")
+                saveItem(item)
             }
             // When the value of the "winner" ends with 2, player 2 wins. Then a separate activity starts that shows "Player 2 won!"
 
             else{
                 startActivity(Draw)
-              //  Toast.makeText(this, "Draw!", Toast.LENGTH_LONG).show()
+            //  Toast.makeText(this, "Draw!", Toast.LENGTH_LONG).show()
+                val item = winners(0,"Draw")
+                saveItem(item)
             }
 
             // When the value of the "winner" ends with 3, no one wins, it is a draw!. Then a separate activity starts that shows "Draw!"
 
         }
 
+    }
+    fun saveItem(item : winners) {
+        launch(Dispatchers.IO) {
+            db.WinnerDao().insert(item)
+        }
     }
 }
 

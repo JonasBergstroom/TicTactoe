@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import androidx.room.RoomDatabase
 import kotlinx.android.synthetic.main.activity_player__wins.*
 import kotlinx.android.synthetic.main.activity_welcome.*
 
@@ -26,6 +27,12 @@ class welcome : AppCompatActivity() {
             val intentb = Intent(this, BotPlay :: class.java)
 
             startActivity(intentb)
+        }
+        val buttonscore : Button = findViewById(R.id.buttonscore)
+        buttonscore.setOnClickListener {
+            val intent = Intent(this, com.example.tictactoe.RoomDatabase :: class.java)
+
+            startActivity(intent)
         }
 
 

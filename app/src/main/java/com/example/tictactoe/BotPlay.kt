@@ -6,16 +6,37 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import kotlinx.android.synthetic.main.activity_main.*
+import androidx.room.Room
+import kotlinx.android.synthetic.main.activity_bot_play.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import java.util.*
 import kotlin.collections.ArrayList
+import kotlin.coroutines.CoroutineContext
 import com.example.tictactoe.Draw as Draw
 
-class BotPlay : AppCompatActivity() {
+class BotPlay : AppCompatActivity(),CoroutineScope {
+
+
+    private lateinit var job : Job
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.Main + job
+
+    private lateinit var db : AppDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bot_play)
+
+        job = Job()
+
+        db = Room.databaseBuilder(applicationContext, AppDatabase::class.java, "Winners")
+            .fallbackToDestructiveMigration()
+            .build()
+
+
     }
 
     fun buttClick(view: View) {
@@ -270,12 +291,16 @@ class BotPlay : AppCompatActivity() {
             if (winner == 1) {
                 startActivity(player_Won)
                 //   Toast.makeText(this, "Player 1 won the game!", Toast.LENGTH_LONG).show()
+                val item = winners(0,"Player")
+                saveItem(item)
             }
             // When the value of the "winner" ends with == 1, player wins. Then a separate activity starts that shows "Player won!"
 
             else if (winner == 2) {
                 startActivity(botPlayer_Won)
                 // Toast.makeText(this, "Player 2 won the game!", Toast.LENGTH_LONG).show()
+                val item = winners(0,"BotPlayer")
+                saveItem(item)
             }
             // When the value of the "winner" ends with 2, botplayer wins. Then a separate activity starts that shows "BotPlayer won!"
 
@@ -286,6 +311,11 @@ class BotPlay : AppCompatActivity() {
 
             // When the value of the "winner" ends with 3, no one wins, it is a draw!. Then a separate activity starts that shows "Draw!"
 
+        }
+    }
+    fun saveItem(item : winners) {
+        launch(Dispatchers.IO) {
+            db.WinnerDao().insert(item)
         }
     }
 }
